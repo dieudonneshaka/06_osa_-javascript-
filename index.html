@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lämpötilatarkistus</title>
+    <link rel="stylesheet" href="./reset.css" />
+    <link rel="stylesheet" href="./layout.css" />
+  </head>
+  <body>
+    <h1>Lämpötilatarkistus</h1>
+    <p>Syötä lämpötila (Celsius-asteina):</p>
+    <input type="number" id="getTempretureInput" placeholder="Lämpötila">
+    <button oncilick="checkTemperature()">tarkistus</button>
+    <p id="result"></p>
+    <p>
+      Tehtävänä on koodata JavaScriptillä keskusteluikkuna, johon lisätään
+      sisältö "Hyvää huomenta!" (alert)
+    </p>
+    <p>Toisena tehtävänä kirjoita selaimen konsoliin jotakin. (console.log)</p>
+    <!-- JavaScript lisätään bodyn loppuun, jotta se suoritaaan vasta kun koko DOM-rakenne on valmis-->
+    <script>
+  
+      /* Luo olio nimeltään `henkilö` ominaisuuksilla: `nimi` asetettuna "Aleksi" ja `ikä` asetettuna 30.
+      Tulosta tämä olio konsoliin.
+      */
+
+      let person ={
+        name: 'alex',
+        age: 30
+      };
+      console.log(person);
+
+       // Tehtävä 2: Olio-ominaisuuksien käyttäminen
+       /*
+       Käytä ja kirjaa `nimi` ja `ikä` henkilö-oliosta.
+       */
+      console.log(person.name);
+      console.log(person.age);
+
+
+      // Tehtävä 3: Olion ominaisuuksien muokkaaminen
+      /*
+      Päivitä `henkilö`-olio: aseta `ikä` arvoon 31. Lisää sitten uusi ominaisuus `maa` asetettuna "Kroatia".
+      Kirjaa päivitetty olio.
+      */
+     person.age = 31;
+     person.country = 'croatia';
+     console.log(person);     
+
+     // Tehtävä 4: Sisäkkäiset oliot
+     /*
+     Luo olio `opiskelija` ominaisuuksilla: `nimi` arvolla "Emilia" ja `tiedot` oliona, jossa ominaisuudet `ikä` asetettuna 22 ja `kurssi` asetettuna "JavaScript".
+     Kirjaa `opiskelijan` `kurssi`.
+     Odotettu tulos: "Kurssi: JavaScript"
+     */
+
+     let student ={
+      Name: 'Emily',
+      age: 22,
+      course: 'javascript'
+
+     };
+     console.log(student);
+
+     // Tehtävä 5: Ominaisuuksien poistaminen
+    /*
+    Poista `henkilö`-oliosta ominaisuus `ikä`. Kirjaa saatu olio.
+    Odotettu tulos: { nimi: "Aleksi", maa: "Kroatia" }
+    */
+
+    delete person.age;
+    console.log(person);
+
+
+
+
+    // Task 6: Object Keys and Values
+/*
+Log all property names (keys) of the `person` object, then log all property values.
+Expected outcomes:
+Keys: name, country
+Values: Alex, Canada
+*/
+
+console.log("Keys:", Object.keys(person).join(", "));
+console.log("Values:", Object.values(person).join(", "));
+
+
+    // Tehtävä 7: Olion metodien käyttäminen
+/*
+Määritä metodi `tervehdi` sisälle `henkilö`-olioon, joka palauttaa "Hei, nimeni on Aleksi".
+Kutsu tätä metodia ja kirjaa tulos.
+Odotettu tulos: "Hei, nimeni on Aleksi"
+*/
+
+person.greet = function(){
+  return `hello, my name is ${this .name}.`;
+
+}
+console.log(person.greet());
+
+/* Tehtävä 1
+Luo JavaScript-taulukko nimeltä `kirjasto`, joka edustaa kirjojen kokoelmaa.
+Jokaisella kirjalla tulisi olla ominaisuudet `otsikko`, `kirjailija` ja `julkaisuvuosi`.
+Lisää ainakin kaksi kirja-oliota tähän kokoelmaan.
+*/
+
+let library = [
+{
+  Book: 'The secret',
+  Release: 2010,
+  Writter: 'Dieu'
+},
+{
+  Book: 'The art of war',
+  Release: 2015,
+  Writter: 'Donne'
+
+}
+]
+
+console.log(library);
+
+
+/* Tehtävä 2
+Käytä `kirjaston` ensimmäisen kirjan `otsikko`-ominaisuutta ja tulosta se konsoliin.
+Muuta toisen kirjan `julkaisuvuotta` uuteen vuoteen kokoelmassa ja kirjaa päivitetty kirja-olio konsoliin.
+*/
+
+console.log(library[0].title);
+library[1].release = 2009;
+console.log(library[1]);
+/*
+Tehtävä 3
+Käytä pistenotaatiota lisätäksesi uuden ominaisuuden `lajityypit` (merkkijonotaulukko) ensimmäiseen kirjaan `kirjasto`-taulukossa.
+Käytä hakasulkunotaatiota lisätäksesi boolean-ominaisuuden `onSaatavilla` samaan kirjaan, ilmaisten sen saatavuuden.
+*/
+
+library[0].genres = ["fiction", "slassics"];
+library[0]["isAvailable"] = true;
+
+/* Tehtävä 4
+Määritä konstruktorifunktio nimeltä `Kirja`, joka voi luoda uusia kirja-olioita ominaisuuksilla `otsikko`, `kirjailija`, `julkaisuvuosi` ja `lajityypit`.
+Käyttäen `Kirja`-konstruktoria, luo uusi kirja-olio annetuilla syöttöarvoilla ja lisää se `kirjasto`-kokoelmaan.
+*/
+
+function Book(title, author, yearPublished, genres) {
+  title = title;
+  author = author;
+  yearPublished = yearPublished;
+  genres = genres;
+}
+
+let newBook = new Book("1999", "Jackson curtis", 1994, ["Dystopian", "Political Fiction"]);
+library.push(newBook);
+
+/* Tehtävä 5
+Kirjoita funktio nimeltä `luoKirja`, joka ottaa parametrit `otsikko`, `kirjailija`, `julkaisuvuosi` ja `lajityypit` (taulukko).
+Funktion tulisi palauttaa uusi kirja-olio näillä ominaisuuksilla.
+Testaa `luoKirja`-funktiota luomalla uusi kirja-olio käyttäjän antamilla syötteillä ja kirjaa uusi kirja-olio konsoliin.
+*/
+
+function createBook (title, author, yearPublished, genres){
+title: title
+author: author
+yearPublished: yearPublished
+genres: genres
+
+}
+
+let userBookk = createBook("Lost book", ["drama"]);
+console.log(userBookk);
+
+/* Tehtävä 6
+Muunna `kirjasto`-kokoelma JSON-merkkijonoksi ja kirjaa se konsoliin.
+Tee JSON-merkkijonosta JavaScript-olio ja kirjaa ensimmäisen kirjan otsikko konsoliin.
+*/
+
+let libraryJSON = JSON.stringify(library);
+console.log(libraryJSON);
+
+let parsedLibrary = JSON.parse(libraryJSON);
+console.log(parsedLibrary[0].title);
+
+
+
+    </script>
+
+  </body>
+</html>
